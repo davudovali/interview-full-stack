@@ -2,6 +2,8 @@
   "name": "interview-full-stack",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "client": "npm run start --prefix client",
+    "server": "npm run start --prefix server",
+    "dev": "npm-run-all --parallel client server"
   }
 }
