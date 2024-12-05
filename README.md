@@ -100,9 +100,9 @@ The server will be available at `http://localhost:3000`.
 
 As preparation for the live coding interview, you are asked to complete the following tasks:
 
-### 1. Return products
+#### 1. Get products
 
-Add a new endpoint `GET /api/products` that returns all available products.
+Implement a new endpoint `GET /api/products` that returns all available products.
 
 Example response:
 
@@ -111,21 +111,19 @@ Example response:
   {
     "id": 1,
     "name": "Product A",
-    "description": "Product A description",
     "price": 20
   },
   {
     "id": 2,
     "name": "Product B",
-    "description": "Product B description",
-    "price": 30
+    "price": 10
   }
 ]
 ```
 
-### 2. Return a single product information
+#### 2. Get product details
 
-Add a new endpoint `GET /api/products/:id` that returns a single product, given its ID. If the product is not found, return a `404` error status code with a meaningful error message.
+Implement a new endpoint `GET /api/products/:id` that returns a single product, given its ID. If the product is not found, return a `404` error status code with a meaningful error message.
 
 Example response:
 
@@ -138,15 +136,35 @@ Example response:
 }
 ```
 
+#### 3. Update a product
+
+Implement a new endpoint to update a product, using the route `/api/products/:id`
+
+Example request body
+
+```json
+{
+  "name": "Product A",
+  "description": "Product A description",
+  "price": 20
+}
+```
+
+#### 4. Show the list of products
+
+Given the endpoints implemented in the previous tasks, show a list on the client, containing all the products. Each item on the list should show the name of the product
+
 ### Requirements
 
 - Handle error cases, such as invalid product IDs.
 - Add tests for the newly created endpoints.
+- Add tests for the list of products on the client side.
 - For the purpose of this task, you do not need to use an actual database; using an in-memory array to store product data is sufficient.
-- Feel free you make any changes to the codebase that you consider relevant. This project will be used during the live coding interview.
+- Feel free to make any changes to the codebase that you consider relevant. This project will be used during the live coding interview.
+- If you want to make use of any CSS framework, add the corresponding configurations.
 - Update README file with instructions on how to set up the project after your changes (if new instructions apply).
 
-### Deliverable
+### Deliverables
 
 - Complete the aforementioned tasks and provide us with the updated code.
 - Submit your solution 2 days after receiving the task, adding the link to the code repository, or attaching the solution to the email..
