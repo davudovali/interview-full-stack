@@ -1,9 +1,24 @@
 {
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
   "compilerOptions": {
-    "target": "es6",
-    "module": "es6",
-    "jsx": "react",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
     "strict": true,
-    "esModuleInterop": true
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "typeRoots": [
+      "node_modules/@types",
+      "src/types"
+    ]
   }
 }
+

@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { Route, Routes } from 'react-router';
 
-const App: React.FC = () => {
-  const [message, setMessage] = useState("");
+import ProductsList from './pages/ProductsList/ProductsList';
+import Product from './pages/Product/Product';
 
-  useEffect(() => {
-    fetch("http://localhost:3000/api/hello")
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message))
-      .catch((err) => console.error(err));
-  }, []);
 
+function App() {
   return (
-    <div>
-      <h1>{message ? message : "Loading..."}</h1>
-    </div>
-  );
-};
+    <div className='appContainer'>
+      <Routes>
+        <Route path='/' element={<ProductsList />} />
+        <Route path='/products/:id' element={<Product />} />
+      </Routes>
+</div>
+)
+}
 
 export default App;
