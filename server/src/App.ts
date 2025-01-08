@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 const validatePatchRequest = checkSchema({
-    name: {optional: false,
+    name: {optional: true,
         isLength: {
             options: { min: 5, max: 50},
             errorMessage: 'Name length should be between 5 and 50 characters'
@@ -18,7 +18,7 @@ const validatePatchRequest = checkSchema({
         trim: true,
         escape: true,
     },
-    description: {optional: false,
+    description: {optional: true,
         isLength: {
             options: { min: 20, max: 200 },
             errorMessage: 'Description length should be between 20 and 200 characters'
@@ -27,8 +27,8 @@ const validatePatchRequest = checkSchema({
         trim: true,
         escape: true,
     },
-    price: {optional: false,
-        isFloat: {errorMessage: 'Price should be a number between 0.01 and 200', options: {min: 0.01, max: 9999}}
+    price: {optional: true,
+        isFloat: {errorMessage: 'Price should be a number between 0.01 and 10000', options: {min: 0.01, max: 10000}}
     }
 })
 
@@ -60,8 +60,6 @@ app.patch('/api/products/:id', validatePatchRequest, (req: any, res: any) => {
 
     const productId = parseInt(req.params.id);
     const product = productsList[productId];
-
-
 
     if (product) {
         (['name', 'price', 'description'] ).forEach((fieldId) => {
