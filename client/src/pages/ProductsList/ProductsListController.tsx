@@ -2,18 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import { ProductType } from "../../types/ProductType.ts";
 import ProductsListView from "./ProductsListView.tsx";
 
-const controller = new AbortController();
-const signal = controller.signal;
-
 function ProductsListController() {
     const [products, setProducts] = useState<ProductType[] | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     const requestProducts = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/products`, {
-                signal,
-            });
+            const response = await fetch(`http://localhost:3000/api/products`);
 
             if (response.status === 200) {
                 const data = await response.json();
