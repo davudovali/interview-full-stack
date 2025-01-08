@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 import { Link } from "react-router-dom";
-import { ProductType } from "../../types/ProductType.ts";
+import { ProductType } from "../../../types/ProductType.ts";
 
 function ProductCard({
     product,
