@@ -17,6 +17,7 @@ function ProductCard({
     return (
         <Link
             to={`/products/${product.id}`}
+            data-testid={`product_card_${product.id}`}
             style={{
                 textDecoration: "none",
                 position: "absolute",

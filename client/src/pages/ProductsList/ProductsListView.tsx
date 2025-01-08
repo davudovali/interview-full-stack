@@ -30,7 +30,7 @@ function ProductsListView({
                     buttonLabel="Retry"
                 />
             )}
-            {!products && !error && <Spin size="large" />}
+            {!products && !error && <Spin size="large" data-testid="spinner" />}
             {products && <Virtual2DimensionList products={products} />}
         </main>
     );

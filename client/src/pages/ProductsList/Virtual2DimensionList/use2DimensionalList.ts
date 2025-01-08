@@ -75,6 +75,7 @@ const SMALL_SCREEN_WIDTH_TREESCHOLD = 420;
 
 function getColumnNumber() {
     const width = getWindowViewWidth();
+    console.log("width", width);
     if (width <= SMALL_SCREEN_WIDTH_TREESCHOLD) return 1;
     return Math.floor(width / (DEFAULT_WIDTH + HORIZONTAL_GAP));
 }
