@@ -53,7 +53,7 @@ app.get('/api/products/:id', (req, res) => {
     }
 });
 
-app.patch('/api/products/:id', validatePatchRequest, (req: any, res: any) => {
+app.patch('/api/products/:id', validatePatchRequest, (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (errors.isEmpty() === false) {
         return res.status(400).json({ errors: errors.array() });
