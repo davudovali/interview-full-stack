@@ -1,4 +1,4 @@
-import ProductCard from "../../ProductsList/ProductCard.tsx";
+import ProductCard from "../ProductCard/ProductCard.tsx";
 import { ProductType } from "../../../types/ProductType.ts";
 import {
     use2DimensionalList,

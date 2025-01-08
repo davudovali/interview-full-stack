@@ -5,6 +5,9 @@ import { ProductType } from "../../types/ProductType.ts";
 import ProductUpdateForm from "./ProductUpdateForm.tsx";
 import ErrorWithRetryButton from "../../components/ErrorWithRetryButton/ErrorWithRetryButton.tsx";
 
+const controller = new AbortController();
+const signal = controller.signal;
+
 export default function Product() {
     const { id } = useParams();
     const [product, setProduct] = useState<ProductType | null>(null);
@@ -14,7 +17,8 @@ export default function Product() {
     const requestProduct = useCallback(async () => {
         try {
             const response = await fetch(
-                `http://localhost:3000/api/products/${id}`
+                `http://localhost:3000/api/products/${id}`,
+                { signal }
             );
             if (response.status === 200) {
                 const data = await response.json();

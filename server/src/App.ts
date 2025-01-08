@@ -1,5 +1,6 @@
-import express, { Express, Request, Response } from "express";
-import cors from "cors";
+import express = require("express");
+import cors = require("cors");
+import { Express, Request, Response } from "express";
 import { productsList } from "./productsList";
 import { checkSchema, validationResult } from 'express-validator';
 

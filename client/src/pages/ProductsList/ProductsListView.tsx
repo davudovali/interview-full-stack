@@ -1,38 +1,19 @@
-import { useCallback, useEffect, useState } from "react";
+import { memo } from "react";
 import { Spin } from "antd";
 import { ProductType } from "../../types/ProductType.ts";
 
 import ErrorWithRetryButton from "../../components/ErrorWithRetryButton/ErrorWithRetryButton.tsx";
 import Virtual2DimensionList from "./Virtual2DimensionList/Virtual2DimensionList.tsx";
 
-function App() {
-    const [products, setProducts] = useState<ProductType[] | null>(null);
-    const [error, setError] = useState<string | null>(null);
-
-    const requestProducts = useCallback(async () => {
-        try {
-            const response = await fetch(`http://localhost:3000/api/products`);
-
-            if (response.status === 200) {
-                const data = await response.json();
-                setProducts(data);
-            } else {
-                setError("Something went wrong");
-            }
-        } catch (e) {
-            setError("Something went wrong");
-        }
-    }, []);
-
-    useEffect(() => {
-        requestProducts();
-    }, []);
-
-    const onRetry = useCallback(() => {
-        setError(null);
-        requestProducts();
-    }, []);
-
+function ProductsListView({
+    products,
+    error,
+    onRetry,
+}: {
+    products: ProductType[] | null;
+    onRetry: () => void;
+    error: string | null;
+}) {
     return (
         <main
             style={{
@@ -55,4 +36,4 @@ function App() {
     );
 }
 
-export default App;
+export default memo(ProductsListView);
